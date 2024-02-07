@@ -33,7 +33,7 @@ class DimensionService:
             cellset[(deployment, item, "Deployment End")] = datetime.datetime.strftime(end_time,
                                                                                        '%Y-%m-%d %H:%M:%S')
             cellset[(deployment, item, "Deployment Duration")] = str(duration)
-            self.server.cubes.cells.write_values('SYS_Deployments', cellset)
+            self.server.cubes.cells.write_values('System - Deployments', cellset)
         except TM1pyException as t:
             print(t)
 
@@ -68,6 +68,6 @@ class DimensionService:
             cellset[(deployment, item, "Deployment End")] = datetime.datetime.strftime(end_time,
                                                                                        '%Y-%m-%d %H:%M:%S')
             cellset[(deployment, item, "Deployment Duration")] = str(duration)
-            self.server.cubes.cells.write_values('SYS_Deployments', cellset)
+            self.server.cubes.cells.write_values('System - Deployments', cellset)
         except TM1pyException as t:
             print(t)

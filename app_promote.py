@@ -20,7 +20,7 @@ from PyPromote import ReadFile
 from base_settings import application_path
 
 APP_NAME = 'PyPromote'
-APP_VERSION = '2.0'
+APP_VERSION = '2.1'
 COPYRIGHT = '© 2023 Application Consulting Group'
 
 
