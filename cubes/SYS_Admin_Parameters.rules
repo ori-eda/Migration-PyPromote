@@ -1,0 +1,19 @@
+FEEDSTRINGS;
+SKIPCHECK;
+[{'System Parameters', 'Environment', 'Directories'}, 'String'] = S: '';
+['Data Directory', 'String'] = S: DB('SYS_Admin_Parameters','Directory','String') | 'Database\';
+['Logging Directory', 'String'] = S:  DB('SYS_Admin_Parameters','Directory','String') | 'Logging\';
+['Import Directory', 'String'] = S:  DB('SYS_Admin_Parameters','Directory','String') | 'Data\Import\';
+['Export Directory', 'String'] = S:  DB('SYS_Admin_Parameters','Directory','String') | 'Data\Export\';
+['Programs Directory', 'String'] = S:  DB('SYS_Admin_Parameters','Directory','String') | 'Programs\';
+['Backup Directory', 'String'] = S:  DB('SYS_Admin_Parameters','Directory','String') | 'Backups\';
+
+
+
+FEEDERS;
+['Directory'] => DB('SYS_Admin_Parameters','Data Directory','String');
+['Directory'] => DB('SYS_Admin_Parameters','Logging Directory','String');
+['Directory'] => DB('SYS_Admin_Parameters','Import  Directory','String');
+['Directory'] => DB('SYS_Admin_Parameters','Export  Directory','String');
+['Directory'] => DB('SYS_Admin_Parameters','Programs  Directory','String');
+['Directory'] => DB('SYS_Admin_Parameters','Backup  Directory','String');

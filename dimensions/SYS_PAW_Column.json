@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"SYS_PAW_Column",
+	"Hierarchies@Code.links":
+	[
+		"SYS_PAW_Column.hierarchies/SYS_PAW_Column.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('SYS_PAW_Column')/Hierarchies('SYS_PAW_Column')"
+	}
+}

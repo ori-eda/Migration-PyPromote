@@ -1,0 +1,167 @@
+{
+	"@type":"Hierarchy",
+	"Name":"SYS_Admin_Parameters",
+	"Elements":
+	[
+		{
+			"Name":"System Parameters",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Environment",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Environment Type",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Environment Name",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Directories",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Drive",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Directory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Data Directory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Logging Directory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Import Directory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Export Directory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Programs Directory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Python Directory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Backup Parameters",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Backup Retention",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Log Retention",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Backup Directory",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"System Parameters",
+			"ComponentName":"Environment",
+			"Weight":1
+		},
+		{
+			"ParentName":"System Parameters",
+			"ComponentName":"Directories",
+			"Weight":1
+		},
+		{
+			"ParentName":"System Parameters",
+			"ComponentName":"Backup Parameters",
+			"Weight":1
+		},
+		{
+			"ParentName":"Environment",
+			"ComponentName":"Environment Type",
+			"Weight":1
+		},
+		{
+			"ParentName":"Environment",
+			"ComponentName":"Environment Name",
+			"Weight":1
+		},
+		{
+			"ParentName":"Directories",
+			"ComponentName":"Python Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Directories",
+			"ComponentName":"Drive",
+			"Weight":1
+		},
+		{
+			"ParentName":"Directories",
+			"ComponentName":"Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Directories",
+			"ComponentName":"Data Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Directories",
+			"ComponentName":"Logging Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Directories",
+			"ComponentName":"Import Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Directories",
+			"ComponentName":"Export Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Directories",
+			"ComponentName":"Programs Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Backup Parameters",
+			"ComponentName":"Backup Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Backup Parameters",
+			"ComponentName":"Logging Directory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Backup Parameters",
+			"ComponentName":"Backup Retention",
+			"Weight":1
+		},
+		{
+			"ParentName":"Backup Parameters",
+			"ComponentName":"Log Retention",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"SYS_Admin_Parameters.subsets/Default.json"
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"mSYS_UserSelections",
+	"Hierarchies@Code.links":
+	[
+		"mSYS_UserSelections.hierarchies/mSYS_UserSelections.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('mSYS_UserSelections')/Hierarchies('mSYS_UserSelections')"
+	}
+}

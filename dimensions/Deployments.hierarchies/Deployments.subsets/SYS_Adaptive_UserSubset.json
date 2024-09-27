@@ -1,0 +1,5 @@
+{
+	"@type":"Subset",
+	"Name":"SYS_Adaptive_UserSubset",
+	"Expression":"{STRTOSET([SYS_User_Subsets].([SYS_PAW_Column].[Nothing],[mSYS_UserSelections].[Deployment_Selected]))}"
+}

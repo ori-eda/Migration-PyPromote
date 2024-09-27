@@ -1,0 +1,465 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Deployment Items",
+	"Elements":
+	[
+		{
+			"Name":"All Items",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Item 1",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 2",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 3",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 4",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 5",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 6",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 7",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 8",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 9",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 10",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 11",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 12",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 13",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 14",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 15",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 16",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 17",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 18",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 19",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 20",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 21",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 22",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 23",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 24",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 25",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 26",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 27",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 28",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 29",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 30",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 31",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 32",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 33",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 34",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 35",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 36",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 37",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 38",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 39",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 40",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 41",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 42",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 43",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 44",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 45",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 46",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 47",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 48",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 49",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Item 50",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 1",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 2",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 3",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 4",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 5",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 6",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 7",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 8",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 9",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 10",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 11",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 12",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 13",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 14",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 15",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 16",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 17",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 18",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 19",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 20",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 21",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 22",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 23",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 24",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 25",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 26",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 27",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 28",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 29",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 30",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 31",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 32",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 33",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 34",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 35",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 36",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 37",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 38",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 39",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 40",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 41",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 42",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 43",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 44",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 45",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 46",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 47",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 48",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 49",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Items",
+			"ComponentName":"Item 50",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

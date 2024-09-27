@@ -1,0 +1,15 @@
+{
+	"@type":"Cube",
+	"Name":"SYS_User_Subsets",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('SYS_PAW_Column')"
+		},
+		{
+			"@id":"Dimensions('mSYS_UserSelections')"
+		}
+	],
+	"Rules@Code.link":"SYS_User_Subsets.rules",
+	"Views@Code.links":[]
+}
