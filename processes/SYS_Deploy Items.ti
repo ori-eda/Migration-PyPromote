@@ -9,6 +9,9 @@
 # Date Created:     09.19.2021
 # Date Modified:	09.19.2021 by: Chad Harvey
 # Purpose:          This process will create an action file and trigger Python script
+
+# PA Modification - Swapnil Sapre
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
 #--------------- Constants ---------------#
@@ -32,15 +35,15 @@ sProgDir = CellGetS('SYS_Admin_Parameters', 'Programs Directory', 'String');
 
 #--------------- Error Handling ---------------#
 IF(pDeployment @= '');
-     nError = 1;
-     sMessage = 'pDeployment not supplied.';
+    nError = 1;
+    sMessage = 'pDeployment not supplied.';
 ELSEIF(ElementIndex('Deployments', 'Deployments', pDeployment) = 0);
-     nError = 1;
-     sMessage = expand('%pDeployment% does not exist.'); 
+    nError = 1;
+    sMessage = expand('%pDeployment% does not exist.'); 
 ENDIF;
 
 IF(nError = 1);
-     ProcessQuit;
+    ProcessQuit;
 ENDIF;
 
 #--------------- Begin Prolog Processing ---------------#
@@ -50,13 +53,13 @@ sStart = TIMST(nStart, '\Y-\m-\d \h:\i:\s');
 #----- Check if Deployment is Active
 sActive = CellGetS(cCube, pDeployment, 'All Items', 'Active');
 IF(sActive @= 'No');
-	 sMessage = expand('ERROR: %pDeployment% is not active exiting');
-     CellPutS(sMessage, cCube, pDeployment, 'All Items', 'Deployment Status');
-     ProcessBreak;
+    sMessage = expand('ERROR: %pDeployment% is not active exiting');
+    CellPutS(sMessage, cCube, pDeployment, 'All Items', 'Deployment Status');
+    ProcessBreak;
 ENDIF;
 
 IF(ViewExists(cCube, cView) = 1);
-     ViewDestroy(cCube, cView);
+    ViewDestroy(cCube, cView);
 ENDIF;
 ViewCreate(cCube, cView, nTemp);
 ViewExtractSkipZeroesSet(cCube, cView, 1);
@@ -67,31 +70,31 @@ ViewExtractSkipRuleValuesSet(cCube, cView, 0);
 nLoop = 1;
 nMax = CubeDimensionCountGet(cCube);
 WHILE(nLoop <= nMax);
-     sDim = TABDIM(cCube, nLoop);
+    sDim = TABDIM(cCube, nLoop);
 
-     IF(HierarchySubsetExists(sDim, sDim, cView) = 1);
-          HierarchySubsetDeleteAllElements(sDim, sDim, cView);
-     ELSE;
-          HierarchySubsetCreate(sDim, sDim, cView, nTemp);
-     ENDIF;
-     
-     IF(sDim @= 'Deployments');
-          HierarchySubsetElementInsert(sDim, sDim, cView, pDeployment, 1);
-     ELSEIF(sDim @= 'Deployment Items');
-          nElement = 1;
-          nElemMax = ElementCount(sDim, sDim);
-          WHILE(nElement <= nElemMax);
-               sElement = ElementName(sDim, sDim, nElement);
-               IF(ElementLevel(sDim, sDim, sElement) =0);
-                    HierarchySubsetElementInsert(sDim, sDim, cView, sElement, HierarchySubsetGetSize(sDim, sDim, cView) + 1);
-               ENDIF;
-               nElement = nElement + 1;
-          END;
-     ELSE;
-          HierarchySubsetElementInsert(sDim, sDim, cView, 'Type', 1);
-     ENDIF;
-     ViewSubsetAssign(cCube, cView, sDim, cView);
-     nLoop = nLoop + 1;
+    IF(HierarchySubsetExists(sDim, sDim, cView) = 1);
+        HierarchySubsetDeleteAllElements(sDim, sDim, cView);
+    ELSE;
+        HierarchySubsetCreate(sDim, sDim, cView, nTemp);
+    ENDIF;
+
+    IF(sDim @= 'Deployments');
+        HierarchySubsetElementInsert(sDim, sDim, cView, pDeployment, 1);
+    ELSEIF(sDim @= 'Deployment Items');
+        nElement = 1;
+        nElemMax = ElementCount(sDim, sDim);
+        WHILE(nElement <= nElemMax);
+            sElement = ElementName(sDim, sDim, nElement);
+            IF(ElementLevel(sDim, sDim, sElement) =0);
+                HierarchySubsetElementInsert(sDim, sDim, cView, sElement, HierarchySubsetGetSize(sDim, sDim, cView) + 1);
+            ENDIF;
+            nElement = nElement + 1;
+        END;
+    ELSE;
+        HierarchySubsetElementInsert(sDim, sDim, cView, 'Type', 1);
+    ENDIF;
+    ViewSubsetAssign(cCube, cView, sDim, cView);
+    nLoop = nLoop + 1;
 END;
 
 #----- Assign View to Process
@@ -117,112 +120,115 @@ sActive = CellGetS(cCube, pDeployment, vItems, 'Active');
 sParams = '';
 
 IF(nHeader = 0);
-	 #----- Retrieve Promotion Server Information
-     sCloud = CellGetS(cEnv, 'Deployment', 'Cloud');
-     IF(sCloud @= 'True');
-     	  sURL = CellGetS(cEnv, 'Deployment', 'Base URL');
-          sNamespace = CellGetS(cEnv, 'Deployment', 'Namespace');
-          sSSL = CellGetS(cEnv, 'Deployment', 'SSL');
-          sVerify = CellGetS(cEnv, 'Deployment', 'Verify');
-          sAsync = CellGetS(cEnv, 'Deployment', 'Async-Requests-Mode');
-          sSecret = CellGetS(cEnv, 'Deployment', 'Secret Name');
-          ASCIIOutput(sFile, expand('%cTab0%Server: {base_url: %sURL%, ssl: %sSSL%, namespace: %sNameSpace%, verify: %sVerify%, async_requests_mode: %sAsync%, Secret: %sSecret%}'));
-     ELSE;
-     	sAddress = CellGetS(cEnv, 'Deployment', 'Address');
-          sPort = CellGetS(cEnv, 'Deployment', 'Port');
-          sSSL = CellGetS(cEnv, 'Deployment', 'SSL');
-          sNamespace = CellGetS(cEnv, 'Deployment', 'Namespace');
-          sGateway = CellGetS(cEnv, 'Deployment', 'Gateway');
-          sSecret = CellGetS(cEnv, 'Deployment', 'Secret Name');
-          ASCIIOutput(sFile, expand('%cTab0%Server: {address: %sAddress%, port: %sport%, ssl: %sSSL%, namespace: %sNamespace%, gateway: %sGateway%, Secret: %sSecret%}'));
-     ENDIF;
-     
-     sSource = CellGetS(cCube, pDeployment, 'All Items', 'Source');
-     sCloud = CellGets(cEnv, sSource, 'Cloud');
-     IF(sCloud @= 'True');
-          sURL = CellGetS(cEnv, sSource, 'Base URL');
-          sNamespace = CellGetS(cEnv, sSource, 'Namespace');
-          sSSL = CellGetS(cEnv, sSource, 'SSL');
-          sVerify = CellGetS(cEnv, sSource, 'Verify');
-          sAsync = CellGetS(cEnv, sSource, 'Async-Requests-Mode');
-          sSecret = CellGetS(cEnv, sSource, 'Secret Name');
-          ASCIIOutput(sFile, expand('%cTab0%Source: {base_url: %sURL%, ssl: %sSSL%, namespace: %sNameSpace%, verify: %sVerify%, async_requests_mode: %sAsync%, Secret: %sSecret%}'));
-     ELSE;
-          sAddress = CellGetS(cEnv, sSource, 'Address');
-          sPort = CellGetS(cEnv, sSource, 'Port');
-          sSSL = CellGetS(cEnv, sSource, 'SSL');
-          sNamespace = CellGetS(cEnv, sSource, 'Namespace');
-          sGateway = CellGetS(cEnv, sSource, 'Gateway');
-          sSecret = CellGetS(cEnv, sSource, 'Secret Name');
-          ASCIIOutput(sFile, expand('%cTab0%Source: {address: %sAddress%, port: %sport%, ssl: %sSSL%, namespace: %sNamespace%, gateway: %sGateway%, Secret: %sSecret%}'));
-     ENDIF;
+    #----- Retrieve Promotion Server Information
+    sCloud = CellGetS(cEnv, 'Deployment', 'Cloud');
+    IF(sCloud @= 'True');
+        sURL = CellGetS(cEnv, 'Deployment', 'Base URL');
+        sNamespace = CellGetS(cEnv, 'Deployment', 'Namespace');
+        sSSL = CellGetS(cEnv, 'Deployment', 'SSL');
+        sVerify = CellGetS(cEnv, 'Deployment', 'Verify');
+        sAsync = CellGetS(cEnv, 'Deployment', 'Async-Requests-Mode');
+        sSecret = CellGetS(cEnv, 'Deployment', 'Secret Name');
+        ASCIIOutput(sFile, expand('%cTab0%Server: {base_url: %sURL%, ssl: %sSSL%, namespace: %sNameSpace%, verify: %sVerify%, async_requests_mode: %sAsync%, Secret: %sSecret%}'));
+        # Our environemnts are all on cloud so this else part may not be required
+    ELSE;
+        sAddress = CellGetS(cEnv, 'Deployment', 'Address');
+        sPort = CellGetS(cEnv, 'Deployment', 'Port');
+        sSSL = CellGetS(cEnv, 'Deployment', 'SSL');
+        sNamespace = CellGetS(cEnv, 'Deployment', 'Namespace');
+        sGateway = CellGetS(cEnv, 'Deployment', 'Gateway');
+        sSecret = CellGetS(cEnv, 'Deployment', 'Secret Name');
+        ASCIIOutput(sFile, expand('%cTab0%Server: {address: %sAddress%, port: %sport%, ssl: %sSSL%, namespace: %sNamespace%, gateway: %sGateway%, Secret: %sSecret%}'));
+    ENDIF;
 
-     sTarget = CellGetS(cCube, pDeployment, 'All Items', 'Target');
-     sCloud = CellGets(cEnv,sTarget, 'Cloud');
-     IF(sCloud @= 'True');
-          sURL = CellGetS(cEnv, sTarget, 'Base URL');
-          sNamespace = CellGetS(cEnv, sTarget, 'Namespace');
-          sSSL = CellGetS(cEnv, sTarget, 'SSL');
-          sVerify = CellGetS(cEnv, sTarget, 'Verify');
-          sAsync = CellGetS(cEnv, sTarget, 'Async-Requests-Mode');
-          sSecret = CellGetS(cEnv, sTarget, 'Secret Name');
-          ASCIIOutput(sFile, expand('%cTab0%Target: {base_url: %sURL%, ssl: %sSSL%, namespace: %sNameSpace%, verify: %sVerify%, async_requests_mode: %sAsync%, Secret: %sSecret%}'));
-     ELSE;
-          sAddress = CellGetS(cEnv, sTarget, 'Address');
-          sPort = CellGetS(cEnv, sTarget, 'Port');
-          sSSL = CellGetS(cEnv, sTarget, 'SSL');
-          sNamespace = CellGetS(cEnv, sTarget, 'Namespace');
-          sGateway = CellGetS(cEnv, sTarget, 'Gateway');
-          sSecret = CellGetS(cEnv, sTarget, 'Secret Name');
-          ASCIIOutput(sFile, expand('%cTab0%Target: {address: %sAddress%, port: %sPort%, ssl: %sSSL%, namespace: %sNamespace%, gateway: %sGateway%, Secret: %sSecret%}'));
-     ENDIF;
-     ASCIIOutput(sFile, expand('%cTab0%Title: %sTitle%'));
-     ASCIIOutput(sFile, expand('%cTab0%Deployment: %vDeployments%'));
-     ASCIIOutput(sFile, expand('%cTab0%Deployments:'));
-     nHeader = 1;
+    sSource = CellGetS(cCube, pDeployment, 'All Items', 'Source');
+    sCloud = CellGets(cEnv, sSource, 'Cloud');
+    IF(sCloud @= 'True');
+        sURL = CellGetS(cEnv, sSource, 'Base URL');
+        sNamespace = CellGetS(cEnv, sSource, 'Namespace');
+        sSSL = CellGetS(cEnv, sSource, 'SSL');
+        sVerify = CellGetS(cEnv, sSource, 'Verify');
+        sAsync = CellGetS(cEnv, sSource, 'Async-Requests-Mode');
+        sSecret = CellGetS(cEnv, sSource, 'Secret Name');
+        ASCIIOutput(sFile, expand('%cTab0%Source: {base_url: %sURL%, ssl: %sSSL%, namespace: %sNameSpace%, verify: %sVerify%, async_requests_mode: %sAsync%, Secret: %sSecret%}'));
+        # Our environemnts are all on cloud so this else part may not be required
+    ELSE;
+        sAddress = CellGetS(cEnv, sSource, 'Address');
+        sPort = CellGetS(cEnv, sSource, 'Port');
+        sSSL = CellGetS(cEnv, sSource, 'SSL');
+        sNamespace = CellGetS(cEnv, sSource, 'Namespace');
+        sGateway = CellGetS(cEnv, sSource, 'Gateway');
+        sSecret = CellGetS(cEnv, sSource, 'Secret Name');
+        ASCIIOutput(sFile, expand('%cTab0%Source: {address: %sAddress%, port: %sport%, ssl: %sSSL%, namespace: %sNamespace%, gateway: %sGateway%, Secret: %sSecret%}'));
+    ENDIF;
+
+    sTarget = CellGetS(cCube, pDeployment, 'All Items', 'Target');
+    sCloud = CellGets(cEnv,sTarget, 'Cloud');
+    IF(sCloud @= 'True');
+        sURL = CellGetS(cEnv, sTarget, 'Base URL');
+        sNamespace = CellGetS(cEnv, sTarget, 'Namespace');
+        sSSL = CellGetS(cEnv, sTarget, 'SSL');
+        sVerify = CellGetS(cEnv, sTarget, 'Verify');
+        sAsync = CellGetS(cEnv, sTarget, 'Async-Requests-Mode');
+        sSecret = CellGetS(cEnv, sTarget, 'Secret Name');
+        ASCIIOutput(sFile, expand('%cTab0%Target: {base_url: %sURL%, ssl: %sSSL%, namespace: %sNameSpace%, verify: %sVerify%, async_requests_mode: %sAsync%, Secret: %sSecret%}'));
+        # Our environemnts are all on cloud so this else part may not be required
+    ELSE;
+        sAddress = CellGetS(cEnv, sTarget, 'Address');
+        sPort = CellGetS(cEnv, sTarget, 'Port');
+        sSSL = CellGetS(cEnv, sTarget, 'SSL');
+        sNamespace = CellGetS(cEnv, sTarget, 'Namespace');
+        sGateway = CellGetS(cEnv, sTarget, 'Gateway');
+        sSecret = CellGetS(cEnv, sTarget, 'Secret Name');
+        ASCIIOutput(sFile, expand('%cTab0%Target: {address: %sAddress%, port: %sPort%, ssl: %sSSL%, namespace: %sNamespace%, gateway: %sGateway%, Secret: %sSecret%}'));
+    ENDIF;
+    ASCIIOutput(sFile, expand('%cTab0%Title: %sTitle%'));
+    ASCIIOutput(sFile, expand('%cTab0%Deployment: %vDeployments%'));
+    ASCIIOutput(sFile, expand('%cTab0%Deployments:'));
+    nHeader = 1;
 ENDIF;
 
 IF(sActive @= 'Yes');
-     sType = CellGetS(cCube, pDeployment, vItems, 'Type');
-     sName = CellGetS(cCube, pDeployment, vItems, 'Name');
-     IF(sType @<> 'Dimension' & sType @<> 'View' & sType @<> 'Subset' & sType @<> 'RunTI');
-          ASCIIOUTPUT(sFile, expand('%cTab1%%vItems%: {Type: %vValue%, Name: %sName%}'));
-     ELSEIF(sType @= 'Dimension');
-#           sAttr = CellGetS(cCube, pDeployment, vItems, 'Copy Attributes');
-#           sSubs = CellGetS(cCube, pDeployment, vItems, 'Copy Subsets');
-          ASCIIOutput(sFile, expand('%cTab1%%vItems%: {Type: %sType%, Name: %sName%}'));
-     ELSEIF(sType @= 'View' % sType @= 'Subset');
-          IF(SCAN('|', sName) > 0);
-               ASCIIOutput(sFile, expand('%cTab1%%vItems%: {Type: %sType%, Name: %sName%}'));
-          ELSE;
-               ItemReject(expand('%sName% is not properly formed.'));
-          ENDIF;
-     ELSEIF(sType @= 'RunTI');
-          nLoop = 1;
-          nMax = 10;
-          WHILE(nLoop <= nMax);
-               sMeasure = 'Parameter ' | NumberToString(nLoop);
-               sParam = CellGetS(cCube, pDeployment, vItems, sMeasure);
-               IF(sParam @<> '');
-                    IF(SCAN('|', sParam) > 0);
-                         sParamKey = SUBST(sParam, 1, SCAN('|', sParam) -1);
-                         sParamVal = SUBST(sParam, SCAN('|', sParam)+1, LONG(sParam) - SCAN('|', sParam));
-                         sParam = '"' | sParamKey | '"' | ': ' | '"' | sParamVal | '"';
-                         IF(sParams @= '');
-                              sParams = sParam;
-                         ELSE;
-                              sParams = sParams | ', ' | sParam;
-                         ENDIF;
+    sType = CellGetS(cCube, pDeployment, vItems, 'Type');
+    sName = CellGetS(cCube, pDeployment, vItems, 'Name');
+    IF(sType @<> 'Dimension' & sType @<> 'View' & sType @<> 'Subset' & sType @<> 'RunTI');
+        ASCIIOUTPUT(sFile, expand('%cTab1%%vItems%: {Type: %vValue%, Name: %sName%}'));
+    ELSEIF(sType @= 'Dimension');
+        #           sAttr = CellGetS(cCube, pDeployment, vItems, 'Copy Attributes');
+        #           sSubs = CellGetS(cCube, pDeployment, vItems, 'Copy Subsets');
+        ASCIIOutput(sFile, expand('%cTab1%%vItems%: {Type: %sType%, Name: %sName%}'));
+    ELSEIF(sType @= 'View' % sType @= 'Subset');
+        IF(SCAN('|', sName) > 0);
+            ASCIIOutput(sFile, expand('%cTab1%%vItems%: {Type: %sType%, Name: %sName%}'));
+        ELSE;
+            ItemReject(expand('%sName% is not properly formed.'));
+        ENDIF;
+    ELSEIF(sType @= 'RunTI');
+        nLoop = 1;
+        nMax = 10;
+        WHILE(nLoop <= nMax);
+            sMeasure = 'Parameter ' | NumberToString(nLoop);
+            sParam = CellGetS(cCube, pDeployment, vItems, sMeasure);
+            IF(sParam @<> '');
+                IF(SCAN('|', sParam) > 0);
+                    sParamKey = SUBST(sParam, 1, SCAN('|', sParam) -1);
+                    sParamVal = SUBST(sParam, SCAN('|', sParam)+1, LONG(sParam) - SCAN('|', sParam));
+                    sParam = '"' | sParamKey | '"' | ': ' | '"' | sParamVal | '"';
+                    IF(sParams @= '');
+                        sParams = sParam;
                     ELSE;
-                         ItemReject(expand('%sMeasure% does not contain properly formed parameters: "%sParam%"'));
+                        sParams = sParams | ', ' | sParam;
                     ENDIF;
-               ENDIF;
-               nLoop = nLoop + 1;
-          END;
-          ASCIIOutput(sFile, expand('%cTab1%%vItems%: {Type: %sType%, Name: %sName%, Params: {%sParams%}}'));
-     ENDIF;
+                ELSE;
+                    ItemReject(expand('%sMeasure% does not contain properly formed parameters: "%sParam%"'));
+                ENDIF;
+            ENDIF;
+            nLoop = nLoop + 1;
+        END;
+        ASCIIOutput(sFile, expand('%cTab1%%vItems%: {Type: %sType%, Name: %sName%, Params: {%sParams%}}'));
+    ENDIF;
 ELSE;
-     ItemSkip;
+    ItemSkip;
 ENDIF;
 #endregion
 #region Epilog
@@ -236,14 +242,14 @@ sProg = expand('%sDrive%%sProgDir%PyPromote.exe "%sFile%"');
 ExecuteCommand(sProg, 1);
 
 IF(FileExists(sFile) = 1);
-     ASCIIDelete(sFile);
+    ASCIIDelete(sFile);
 ENDIF;
 
 nEnd = now;
 sEnd = TIMST(nEnd, '\Y-\m-\d \h:\i:\s');
 sDuration = TIMST(nEnd - nStart, '\h:\i:\s');
 IF(nError <> 1);
-	CellPutS('Success', cCube, pDeployment, 'All Items', 'Deployment Status');
+    CellPutS('Success', cCube, pDeployment, 'All Items', 'Deployment Status');
 ENDIF;
 CellPutS(sStart, cCube, pDeployment, 'All Items', 'Deployment Start');
 CellPutS(sEnd, cCube, pDeployment, 'All Items', 'Deployment End');

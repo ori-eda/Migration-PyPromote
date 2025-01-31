@@ -1,5 +1,0 @@
-['Deployment_Selected'] = S: '{[Deployments].[' | 
-		IF(DIMIX('Deployments', DB('SYS_User_Selections', !'}Clients', 'Nothing', 'Deployment')) = 0
-    		, 'Deployment 1'
-            , DB('SYS_User_Selections', !'}Clients', 'Nothing', 'Deployment'))
-    | ']}';

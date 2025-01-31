@@ -3,13 +3,13 @@
 	"Name":"SYS_Deploy Items",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS_Deploy Items.ti",
-	"UIData":"CubeAction=1511\fDataAction=1503\fCubeLogChanges=0\f_ParameterConstraints=e30=\f",
+	"UIData":"CubeAction=1511€DataAction=1503€CubeLogChanges=0€_ParameterConstraints=e30=€",
 	"VariablesUIData":
 	[
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f"
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€"
 	],
 	"DataSource":
 	{
