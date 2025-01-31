@@ -1,0 +1,16 @@
+{
+	"@type":"Hierarchy",
+	"Name":"mSYS_UserSelections",
+	"Elements":
+	[
+		{
+			"Name":"Deployment",
+			"Type":"String"
+		},
+		{
+			"Name":"Deployment_Selected",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

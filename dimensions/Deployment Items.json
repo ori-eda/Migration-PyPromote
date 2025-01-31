@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"Deployment Items",
+	"Hierarchies@Code.links":
+	[
+		"Deployment Items.hierarchies/Deployment Items.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('Deployment Items')/Hierarchies('Deployment Items')"
+	}
+}

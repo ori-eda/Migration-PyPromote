@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"Environments",
+	"Hierarchies@Code.links":
+	[
+		"Environments.hierarchies/Environments.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('Environments')/Hierarchies('Environments')"
+	}
+}

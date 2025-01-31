@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"mSYS_Admin_Parameters",
+	"Hierarchies@Code.links":
+	[
+		"mSYS_Admin_Parameters.hierarchies/mSYS_Admin_Parameters.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('mSYS_Admin_Parameters')/Hierarchies('mSYS_Admin_Parameters')"
+	}
+}

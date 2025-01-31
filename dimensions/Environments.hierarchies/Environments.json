@@ -1,0 +1,19 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Environments",
+	"Elements":
+	[
+		{
+			"Name":"Test - ORI_CONSOL_TEST",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Test - ORI_CONSOL_UAT",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"Environments.subsets/Default.json"
+	]
+}

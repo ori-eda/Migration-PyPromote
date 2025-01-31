@@ -1,0 +1,22 @@
+{
+	"@type":"Cube",
+	"Name":"SYS_Environments",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('Environments')"
+		},
+		{
+			"@id":"Dimensions('mEnvironments')"
+		}
+	],
+	"Rules@Code.link":"SYS_Environments.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('mEnvironments')"
+	},
+	"Views@Code.links":
+	[
+		"SYS_Environments.views/Default.json"
+	]
+}

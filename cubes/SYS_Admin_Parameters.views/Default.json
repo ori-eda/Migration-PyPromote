@@ -1,0 +1,35 @@
+{
+	"@type":"NativeView",
+	"Name":"Default",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('mSYS_Admin_Parameters')/Hierarchies('mSYS_Admin_Parameters')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('mSYS_Admin_Parameters')/Hierarchies('mSYS_Admin_Parameters')/Elements('String')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('SYS_Admin_Parameters')/Hierarchies('SYS_Admin_Parameters')/Subsets('Default')"
+			}
+		}
+	],
+	"Titles":[],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

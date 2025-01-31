@@ -1,0 +1,18 @@
+{
+	"@type":"Cube",
+	"Name":"SYS_User_Selections",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Clients')"
+		},
+		{
+			"@id":"Dimensions('SYS_PAW_Column')"
+		},
+		{
+			"@id":"Dimensions('mSYS_UserSelections')"
+		}
+	],
+	"Rules@Code.link":"SYS_User_Selections.rules",
+	"Views@Code.links":[]
+}

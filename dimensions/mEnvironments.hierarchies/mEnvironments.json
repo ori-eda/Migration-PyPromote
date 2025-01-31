@@ -1,0 +1,55 @@
+{
+	"@type":"Hierarchy",
+	"Name":"mEnvironments",
+	"Elements":
+	[
+		{
+			"Name":"Cloud",
+			"Type":"String"
+		},
+		{
+			"Name":"Address",
+			"Type":"String"
+		},
+		{
+			"Name":"Server Name",
+			"Type":"String"
+		},
+		{
+			"Name":"Base URL",
+			"Type":"String"
+		},
+		{
+			"Name":"Port",
+			"Type":"String"
+		},
+		{
+			"Name":"SSL",
+			"Type":"String"
+		},
+		{
+			"Name":"Namespace",
+			"Type":"String"
+		},
+		{
+			"Name":"Gateway",
+			"Type":"String"
+		},
+		{
+			"Name":"Verify",
+			"Type":"String"
+		},
+		{
+			"Name":"Async-Requests-Mode",
+			"Type":"String"
+		},
+		{
+			"Name":"Secret Name",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"mEnvironments.subsets/Default.json"
+	]
+}

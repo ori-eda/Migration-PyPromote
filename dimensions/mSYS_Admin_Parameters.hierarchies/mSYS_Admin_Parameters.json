@@ -1,0 +1,12 @@
+{
+	"@type":"Hierarchy",
+	"Name":"mSYS_Admin_Parameters",
+	"Elements":
+	[
+		{
+			"Name":"String",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}
